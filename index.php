@@ -1,31 +1,40 @@
 <?php
-    if(isset($_POST["submit"])){
-        print_r($_POST["email"]);
-        print_r("<br>");
+    include_once("config.php");
 
-        print_r($_POST["password"]);
-        print_r("<br>");
+    $email = $_POST["email"];
+    $password = $_POST["password"];
+    $name = $_POST["name"];
+    $d_birth = $_POST["d-birth"];
+    $gender = $_POST["gender"];
+    $cell_phone = $_POST["cell-phone"];
+    $city = $_POST["city"];
+    $state = $_POST["state"];
+    $adress = $_POST["adress"];
 
-        print_r($_POST["name"]);
-        print_r("<br>");
-
-        print_r($_POST["d-birth"]);
-        print_r("<br>");
-
-        print_r($_POST["gender"]);
-        print_r("<br>");
-
-        print_r($_POST["cell-phone"]);
-        print_r("<br>");
-
-        print_r($_POST["city"]);
-        print_r("<br>");
-
-        print_r($_POST["state"]);
-        print_r("<br>");
-
-        print_r($_POST["adress"]);
-    }
+    // Insert the data into the database
+    $result = mysqli_query(
+        $aConnection, "INSERT INTO t_users(
+            email,
+            password,
+            name,
+            `d-birth`,
+            gender,
+            `cell-phone`,
+            city,
+            state,
+            adress
+        ) values (
+            '$email',
+            '$password',
+            '$name',
+            '$d_birth',
+            '$gender',
+            '$cell_phone',
+            '$city',
+            '$state',
+            '$adress'
+        )"
+    );
 ?>
 <!DOCTYPE html>
 <html lang="en">
